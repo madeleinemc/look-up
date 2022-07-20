@@ -337,31 +337,31 @@ function beginDraw() {
 
 		/// CTA ///
 
-		if (frame>0) {
+		// if (frame>0) {
+		// 	cxa.font = "italic "+midType+"px georgia";
+
+		// 	// use the commented one for backwards transitions
+		// 	//cxa.fillText("- back | Okay +", halfX+(units*0.15), halfY+(units*4.5));
+		// 	cxa.fillText("(+)", halfX+(units*0.15), halfY+(units*4.5));
+
+		// 	// allow backwards transitions
+		// 	if (backOver==true) {
+
+		// 	cxa.beginPath();
+		// 	cxa.moveTo(halfX-(units*1.4),halfY+(units*4.8));
+		// 	cxa.lineTo(halfX-(units*0.3),halfY+(units*4.8));
+		// 	cxa.stroke();
+		// 	} else {
+
+		// 	cxa.beginPath();
+		// 	cxa.moveTo(halfX+(units*0.3),halfY+(units*4.8));
+		// 	cxa.lineTo(halfX+(units*1.5),halfY+(units*4.8));
+		// 	cxa.stroke();
+		// 	}
+
+		// } else {
 			cxa.font = "italic "+midType+"px georgia";
-
-			// use the commented one for backwards transitions
-			//cxa.fillText("- back | Okay +", halfX+(units*0.15), halfY+(units*4.5));
-			cxa.fillText("(+)", halfX+(units*0.15), halfY+(units*4.5));
-
-			// allow backwards transitions
-			if (backOver==true) {
-
-			cxa.beginPath();
-			cxa.moveTo(halfX-(units*1.4),halfY+(units*4.8));
-			cxa.lineTo(halfX-(units*0.3),halfY+(units*4.8));
-			cxa.stroke();
-			} else {
-
-			cxa.beginPath();
-			cxa.moveTo(halfX+(units*0.3),halfY+(units*4.8));
-			cxa.lineTo(halfX+(units*1.5),halfY+(units*4.8));
-			cxa.stroke();
-			}
-
-		} else {
-			cxa.font = "italic "+midType+"px georgia";
-		    cxa.fillText("(+)", halfX, halfY+(units*4.5));
+		    cxa.fillText("", halfX, halfY+(units*4.5));
 
 			if (okOver==true) {
 
@@ -371,7 +371,7 @@ function beginDraw() {
 			cxa.stroke();
 			}
 
-		}
+		// }
 
 
 		/// FADE IN ///
