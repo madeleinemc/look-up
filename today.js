@@ -70,12 +70,12 @@ var lastFrame = -1;
 var epochPhase = 1;
 var eraWidth = 0;
 
-var headerTxt = ['HERE IS TODAY','HERE IS THIS MONTH','HERE IS THIS YEAR','HERE IS THIS CENTURY','HERE IS INDUSTRIALIZATION','here is AGRICULTURE','THE FIRST HUMAN	','if humans live the avg. mammal lifespan','The Cambrian Explosion','THE EARTH IS BORN','THE UNIVERSE BEGINS','Earth swallowed/flung','Sun explodes','Stuck in the Local Group','Reaching the affectable universe','Stelliferous Era','Stelliferous Era: LOG','Degenerate Era','Black Hole Era','The DARK Era',''];
+var headerTxt = ['Today','This Month','This Year','This Century','Industrialized Civilization','Existence of Agriculture','Humans','Potential Existence of Humans','Advanced Multicellular Life','The Earth','The Universe','Until the Earth Ends','Until the Sun Ends','Stuck in the Local Group','Reaching the Affectable Universe','Stelliferous Era','Stelliferous Era: Log Scale','Degenerate Era','Black Hole Era','The Dark Era',''];
 var blurbTxt = [];
 
-var frameFunction = [draw0,draw1,draw2,draw3,draw3_5,draw3_6,draw6,draw4,draw6_5,draw7,draw8,draw9,draw10,draw11,draw12,draw13,draw14,draw15,draw16,draw17,draw18];
+var frameFunction = [draw0,draw1,draw2,draw3,draw3_5,draw3_6,draw6,draw4,draw6_5,draw7,draw8,draw9,draw10,draw11,draw12,draw13,draw14,draw15,draw16,draw17];
 
-var tweenSpeed = 5;
+var tweenSpeed = 3;
 
 // x-position of beginning of time period 
 var shapeX = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -149,7 +149,7 @@ function init() {
 	thisYear = ""+thisDate.getFullYear();
 	thisMonth = ""+months[thisDate.getMonth()];
 	today = ""+days[thisDate.getDay()]+", "+ thisMonth + " " + thisDate.getDate();
-	blurbTxt = [today,thisMonth,thisYear,'21st Century', '18th century GB?', 'dev. during interglacial','Homo sapiens; in Africa','1 million years','The development of advanced multicellular life','The formation of the Earth from the Sun\'s planetary disk','In the beginning, radiation dominated the universe. ','In about 5 billion years, the Sun evolves into a red giant','Simple cell life forms appeared about 3.6 billion years ago','At this time, space is expanding so fast that we would be unable to leave the Local Group (about 50 galaxies; the Milky Way is one of the largest)','If we escape the Local Group we can reach the affectable universe - all that is possible for us to reach. Theoretically, this only requires six hours of the Sun\'s energy','Length of time in for which stars are forming in the universe(from now on we\'ll use a log scale to avoid worthless infographics like this one ... [skull emoji]','The same thing but depicted in log time (base 10)','Star formation ceases \n (good guy log scale)','Dissipating through Hawking radiation. We can still get energy from this and other methods','We might be able to get radiation energy from positronium. Also, this state theoretically continues forever as heat death (though there are other theories of the end of the universe)'];
+	blurbTxt = [today,thisMonth,thisYear,'21st Century', 'The Industrial Revolution in the late 18th century started a worldwide economic transformation.', 'The development of agriculture during an interglacial period allowed communities to form.','Anatomically modern Homo sapiens emerged in Africa.','Historically, mammal species exist for about 1 million years before going extinct.','The Cambrian Explosion about 538.8 million years ago resulted in the emergence of most current animal phyla.','The Earth formed from the Sun\'s planetary disk.','In the beginning, radiation dominated the universe - this was known as the primordial era.','In about 5 billion years, the Sun will evolve into a red giant, swallowing or ejecting the Earth in the process.','After a brief giant phase, the Sun violently ejects its outer shell to become a white dwarf.','At this time, space is expanding so fast that we would be unable to leave the Local Group (about 50 galaxies; the Milky Way is one of the largest)','If we escape the Local Group we can reach the affectable universe - all that is possible for us to reach. Theoretically, this only requires six hours of the Sun\'s energy','This is the time period in for which stars are forming (from now on we\'ll use a log scale to avoid worthless infographics like this one ...)','The same thing but depicted in log time (base 10)','Star formation ceases. Existing stars slowly burn out. Red (and brown) dwarfs last the longest.','Black holes dissipate through Hawking radiation. We can still get energy from this and other methods.','We might be able to get radiation energy from positronium. Also, this state theoretically continues forever as heat death (though there are other theories of the end of the universe)'];
 
 
 
@@ -260,7 +260,7 @@ function beginDraw() {
 			cxa.fillStyle = "#777";
 		}
 		cxa.font = subType+"px PT Sans";
-		cxa.fillText('By Whitevinyl', (fullX-(units*0.5))-1, fullY-(units*0.5));
+		cxa.fillText('Madeleine Chang / Whitevinyl', (fullX-(units*0.5))-1, fullY-(units*0.5));
 		/// GRAPHIC FUNCTION ///
 		cxa.textAlign = 'center';
 		frameFunction[frame]();
@@ -315,7 +315,7 @@ function beginDraw() {
 		cxa.fillStyle = copyColor;
 		cxa.font = bodyType+"px PT Sans";
 
-		if (frame<5) {
+		if (frame<4) {
 		    cxa.fillText(blurbTxt[frame], halfX, halfY+(units*1.8));
 		} else {
 			cxa.fillText(blurbTxt[frame], halfX, halfY-(units*2));
@@ -327,10 +327,10 @@ function beginDraw() {
 
 		/// LINE ///
 
-		cxa.beginPath();
-		cxa.moveTo(halfX-headerWidth,halfY+(units*3));
-		cxa.lineTo(halfX+headerWidth,halfY+(units*3));
-		cxa.stroke();
+		// cxa.beginPath();
+		// cxa.moveTo(halfX-headerWidth,halfY+(units*3));
+		// cxa.lineTo(halfX+headerWidth,halfY+(units*3));
+		// cxa.stroke();
 
 
 
@@ -339,8 +339,12 @@ function beginDraw() {
 
 		if (frame>0) {
 			cxa.font = "italic "+midType+"px georgia";
-			cxa.fillText("- back | Okay +", halfX+(units*0.15), halfY+(units*4.5));
 
+			// use the commented one for backwards transitions
+			//cxa.fillText("- back | Okay +", halfX+(units*0.15), halfY+(units*4.5));
+			cxa.fillText("(+)", halfX+(units*0.15), halfY+(units*4.5));
+
+			// allow backwards transitions
 			if (backOver==true) {
 
 			cxa.beginPath();
@@ -357,7 +361,7 @@ function beginDraw() {
 
 		} else {
 			cxa.font = "italic "+midType+"px georgia";
-		    cxa.fillText("Okay +", halfX, halfY+(units*4.5));
+		    cxa.fillText("(+)", halfX, halfY+(units*4.5));
 
 			if (okOver==true) {
 
@@ -653,10 +657,10 @@ function getPosition(event) {
 			backFrame = 1;
 			frame -= 1;
 		} else if (wvOver==true) {
-			window.location = "http://whitevinyldesign.com/";
+			window.location = "http://madchang.com/";
 			//window.open("http://whitevinyldesign.com","_blank");
 		}else {
-			if (frame!==18) {
+			if (frame!==19) {
 			newFrame = 1;
 			frame += 1;
 			}
@@ -1018,11 +1022,13 @@ function draw3_5(){ // // INDUSTRIALIZATION /////////
 	if (lastFrame<frame) { // FWD
 	
 		dateA = destDateA = 1;
-		shapeW[4] = bgw;
-		shapeX[4] = -(shapeX[0]); // VERY IMPORTANT FOR ALMOST GOOD TRANSITION: FOR =bgx, NO MOVEMENT
+		shapeW[4] = 0; // it expands from 0 to bgw
+		shapeX[4] = bgx; // where it starts before animation
+		 
+		destA[4] = 1;
+		destW[2] = 0;
 		
-		tweenSpeed = 3;
-		
+		tweenSpeed = 3;		
 	}
 	if (lastFrame>frame) { // BK
 		dateA = destDateA = 1;
@@ -1033,58 +1039,37 @@ function draw3_5(){ // // INDUSTRIALIZATION /////////
 	}
 	lastFrame = frame;
 
-	// I STILL DON'T KNOW WHAT THIS DOES
+	// why are these here?
 	destA[7] = 0;
 	destA[6] = 0;
 	destA[5] = 0;
-
-	// tryna make it extend from the left to the right
-	// destX[0] = destX[1] = destX[2] = destX[3] = bgx;
 
 
 	// industrialization = whole bar
 	destX[4] = bgx; // Left edge of the bar AFTER animation
 	destW[4] = bgw; // Width of the bar AFTER animation
-
-	var industrialWidth = bgw;
-	industrialX = bgx;
-
+	
 	// SET THE NEW PROPERTIES //
 
 	var centuryWidth = shapeW[4]/2.94; // 1000/340 = 2.94
-	shapeW[3] = centuryWidth;
-	// shapeX[3] = bgx + bgw - centuryWidth;
-	destX[3] = shapeX[3] = shapeX[4]; // starting from the left edge
-	destW[3] = centuryWidth;
 
-
-
-	var OFFSET = bgw - centuryWidth;
-	//destX[3] += OFFSET;
-	shapeX[3] += OFFSET;
-
+	destX[3]  = bgx + bgw -centuryWidth; // where light blue starts
 	
+	destW[3] = bgw - shapeX[0];
+
+
 	var yearWidth = shapeW[3]/100;
-	shapeW[2] = destW[2];
-	shapeX[2] = shapeX[3]+((thisDate.getFullYear()-2000)*yearWidth);
+	destX[2] = shapeX[3] +((thisDate.getFullYear()-2000)*yearWidth);
 	destW[2] = yearWidth;
-	// shapeW[2] = yearWidth*10;
 
 	var monthWidth = shapeW[2]/12;
-	shapeX[1] = shapeX[2]+(thisDate.getMonth()*monthWidth); // position that month begins
-	destX[1] = shapeX[1];
-	destW[1] = monthWidth; //length of month
+	shapeX[1] = shapeX[2]+(thisDate.getMonth()*monthWidth);
+	destW[1] = monthWidth;
 
 
 	var dayWidth = shapeW[1]/monthDays[thisDate.getMonth()];
 	shapeX[0] = shapeX[1]+(thisDate.getDate()*dayWidth);
 	destW[0] = dayWidth;
-
-	// destX[0] = destX[1] = destX[2] = destX[3] = bgx+bgw;
-
-	shapeW[7] = bgx; 
-
-	// destX = shapeX;
 
 	/// BACKGROUND GREY ///
 	cxa.globalAlpha = 1;
@@ -1107,7 +1092,7 @@ function draw3_5(){ // // INDUSTRIALIZATION /////////
 	baseMarker(centuryX,shapeA[3],"21st Century",colors[6]);
 
 	/// PAST CENTURY ///
-	future = shapeX[0]-shapeX[3]; // future is the size of the past block [skull emoji]
+	future = shapeX[0]-shapeX[3]; // future is the width of the past block [skull emoji]
 	cxa.globalAlpha = shapeA[3];
 	cxa.fillStyle = colors[5]; // light blue - past
 	cxa.fillRect(shapeX[3],y1,future,h1);
@@ -1263,14 +1248,6 @@ function draw3_6() { ////  AGRICULTURE  ///////
 	cxa.globalAlpha = 1;
 	cxa.fillStyle = bgColor;
 	cxa.fillRect(bgw+(units*2),y1-(units*0.55),units*2,h1+(units*4));
-
-	// ///3rd MILLENIUM ///
-	// cxa.globalAlpha = 1;
-	// cxa.fillStyle = colors[5];
-	// cxa.fillRect(shapeX[4],y1,shapeW[4],h1);
-	// /// MARKER ///
-	// millX = shapeX[4]+(shapeW[4]/2);
-	// baseMarker(millX,shapeA[4],"3rd Millennium",colors[5]);
 
 
 	/// BLOCK///
@@ -1481,9 +1458,15 @@ function draw6() { ////   HUMANS <-- PERIOD
 function draw4() { // //  mammal lifespan <-- MILLENIUM  /////////
 
     if (lastFrame<frame) { // FWD
-		shapeX[4] = bgx;
-		shapeW[4] = bgw;
-		tweenSpeed = 10;
+
+		tweenSpeed = 3;
+		dateA = destDateA = 1;
+		destW[8] = 0.2*bgw; // it expands from 0 to bgw
+		shapeX[8] = bgx; // where it starts before animation
+		 
+		destA[8] = 1;
+		
+		tweenSpeed = 3;
 
 	}
 	if (lastFrame>frame) { // BK
@@ -1494,18 +1477,18 @@ function draw4() { // //  mammal lifespan <-- MILLENIUM  /////////
 	lastFrame = frame;
 
 	destA[7] = 0;
-	destA[6] = 0;
+	destA[6] = 1;
 	destA[5] = 0;
 
-	destX[4] = bgx;
-	destW[4] = bgw;
+	destW[6] = shapeW[8] * (12/200)
+	destX[6] = shapeX[0] - shapeW[6] - shapeW[1];
 
 
 
 
 	//2nd
-	shapeX[6] = shapeX[4]-shapeW[6];
-	destW[6] = bgw;
+	// shapeX[6] = shapeX[4]-shapeW[6];
+	// destW[6] = bgw;
 
 	//1st
 	shapeX[5] = shapeX[6]-shapeW[5];
@@ -1519,7 +1502,7 @@ function draw4() { // //  mammal lifespan <-- MILLENIUM  /////////
 	destW[3] = centuryWidth;
 
 	var yearWidth = shapeW[3]/100;
-	shapeX[2] = shapeX[3]+((thisDate.getFullYear()-2000)*yearWidth);
+	destX[2] = shapeX[3]+((thisDate.getFullYear()-2000)*yearWidth);
 	destW[2] = yearWidth;
 
 	var monthWidth = shapeW[2]/12;
@@ -1528,7 +1511,7 @@ function draw4() { // //  mammal lifespan <-- MILLENIUM  /////////
 
 
 	var dayWidth = shapeW[1]/monthDays[thisDate.getMonth()];
-	shapeX[0] = shapeX[1]+(thisDate.getDate()*dayWidth);
+	shapeX[0] = shapeX[8]+shapeW[8] + (thisDate.getDate()*dayWidth);
 	destW[0] = dayWidth;
 
 
@@ -1557,35 +1540,26 @@ function draw4() { // //  mammal lifespan <-- MILLENIUM  /////////
 	cxa.fillRect(shapeX[5],y1,shapeW[5],h1);
 
 
-	//2nd MILLENNIUM
-	cxa.globalAlpha = shapeA[6];
-	cxa.fillStyle = colors[8];
-	cxa.fillRect(shapeX[6],y1,shapeW[6],h1);
-
-	/// 21st century (beyond current date) ///
-	// cxa.globalAlpha = 1;
-	// cxa.fillStyle = colors[6];
-	// cxa.fillRect(shapeX[3],y1,shapeW[3],h1);
-
-	/// CENTURY MARKER ///
-	// centuryX = shapeX[3]+(shapeW[3]/2);
-	// baseMarker(centuryX,shapeA[3],"21st Century",colors[6]);
 
 	OFFSET = bgw/5;
 
 
 	/// time since first human ///
-	future = bgw/5; // 200k years
 	cxa.globalAlpha = shapeA[3];
-	cxa.fillStyle = colors[10]; // light blue
-	cxa.fillRect(shapeX[3],y1,future,h1);
+	cxa.fillStyle = colors[10]; // purple
+	cxa.fillRect(shapeX[8],y1,shapeW[8],h1);
+
+	/// Industrialization ///
+	cxa.globalAlpha = 1;	
+	cxa.fillStyle = colors[7]; // b/green
+	cxa.fillRect(shapeX[0],y1,-shapeW[6],h1);
 
 	/// YEAR ///
-	future = shapeX[0]-shapeX[2];
+	// future = shapeX[0]-shapeX[2];
 	cxa.globalAlpha = shapeA[2];
-	cxa.fillStyle = colors[3];
+	cxa.fillStyle = colors[3]; //red (rose)
 	shapeX[2] = bgx + bgw/5;
-	cxa.fillRect(shapeX[2],y1,future,h1);
+	cxa.fillRect(shapeX[0],y1,-shapeW[2],h1);
 
 	/// BLOCK///
 	cxa.globalAlpha = 1;
@@ -1594,10 +1568,11 @@ function draw4() { // //  mammal lifespan <-- MILLENIUM  /////////
 
 
 	/// DAY ///
+	shapeA[0] = 1;
 	cxa.globalAlpha = shapeA[0];
 	cxa.fillStyle = colors[0];
-	shapeX[0] = bgx + bgw/5;
-	cxa.fillRect(shapeX[0],y1,shapeW[0],h1);
+	destX[0] = bgx + bgw/5;
+	cxa.fillRect(shapeX[0],y1,dayWidth,h1);
 
 	/// DATE MARKER ///
 	topMarker(bgx,dateA,"200,000 years ago",colors[10]);
@@ -1605,17 +1580,24 @@ function draw4() { // //  mammal lifespan <-- MILLENIUM  /////////
 
 function draw6_5(){ // Cambrian explosion
 	if (lastFrame<frame) { // FWD
-		dateA = destDateA = 0;
-		shapeX[9] = bgx;
-		shapeW[11] = shapeW[10] = shapeW[9] = bgw;
-		tweenSpeed = 7;
+		dateA = destDateA = 1;
+		shapeX[9] = bgx;	
+		// shapeW[11] = shapeW[10] = shapeW[9] = bgw;
+		tweenSpeed = 3;
 
-		destW[9] = (bgw/100)*5;
-	    destW[10] = (bgw/100)*30;
+		//new
+		shapeW[9] = shapeW[10] = 0;
+		shapeX[9] = shapeX[10]= bgx;
+
+		destW[9] = (bgw/538)*200;
+	    destW[10] = bgw;
+		destW[8] = 0; // it shrink from og to 0
 
 		shapeW[12] = bgw*20;
 		destW[12] = bgw;
 		shapeX[12] = (fullX-shapeW[12]) - (units*2);
+
+		shapeA[8] = shapeA[6] = 1;	
 	}
 	if (lastFrame>frame) { // BK
 		dateA = destDateA = 1;
@@ -1641,12 +1623,23 @@ function draw6_5(){ // Cambrian explosion
 	}
 	lastFrame = frame;
 
+	destA[6] = 1;
+	destA[8] = 1;
 	destA[9] = 1;
 	destA[10] = 1;
-	destA[11] = 1;
+	destA[11] = 0;
 	destA[12] = 0;
 	destA[13] = 0;
 	destA[14] = 0;
+
+	// the stuff from the last frame that is getting phased out
+		
+	shapeW[8] = bgx + bgw - (shapeX[9] + shapeW[9]); // gap between end of mammal and end of line
+	shapeX[8] = bgx;
+
+	shapeW[6] = shapeW[8] * (12/200)
+	destX[6] = shapeX[0] - shapeW[6] - shapeW[1];
+
 
 	shapeX[12] = (fullX-shapeW[12]) - (units*2);
     shapeX[13] = shapeX[12]-shapeW[13];
@@ -1661,16 +1654,14 @@ function draw6_5(){ // Cambrian explosion
 	shapeX[9] = shapeX[0]-shapeW[9];
 
 	// Cambrian explosion <-- Dinosaurs
-	//destW[10] = (bgw/100)*30;
-	//shapeW[10] = (shapeW[12]/100)*30;
-	shapeW[10] =  bgw; // 538.8 Myr
-	shapeX[10] = bgx+bgw - shapeW[10];
+	// destW[10] = bgw; // 538.8 Myr
+	destX[10] = bgx;
 
 	//shapeW[11] = bgw - (destW[10]+destW[9]);
 	shapeW[11] = bgw - (shapeW[10]);
 	shapeX[11] = bgx;
 
-
+	
 
 	destA[8] = 0;
 	destA[7] = 0;
@@ -1700,31 +1691,6 @@ function draw6_5(){ // Cambrian explosion
 	cxa.fillRect(bgx,y1,bgw,h1);
 
 
-	/// PALEOZOIC ///
-	cxa.globalAlpha = shapeA[14];
-	cxa.fillStyle = colors[16];
-	cxa.fillRect(shapeX[14],y1,shapeW[14],h1);
-	/// MARKER ///
-	millX = shapeX[14]+(shapeW[14]/2);
-	baseMarker(millX,shapeA[14],"Paleozoic era",colors[16]);
-
-	/// MESOZOIC ///
-	cxa.globalAlpha = shapeA[13];
-	cxa.fillStyle = colors[15];
-	cxa.fillRect(shapeX[13],y1,shapeW[13],h1);
-	/// MARKER ///
-	millX = shapeX[13]+(shapeW[13]/2);
-	baseMarker(millX,shapeA[13],"Mesozoic era",colors[15]);
-
-	/// CENOZOIC ///
-	cxa.globalAlpha = shapeA[12];
-	cxa.fillStyle = colors[14];
-	cxa.fillRect(shapeX[12],y1,shapeW[12],h1);
-	/// MARKER ///
-	millX = shapeX[12]+(shapeW[12]/2);
-	baseMarker(millX,shapeA[12],"Cenozoic era",colors[14]);
-
-
 	/// Earth is born <- PALEOGENE ///
 	cxa.globalAlpha = shapeA[11];
 	cxa.fillStyle = colors[13]; //red
@@ -1750,44 +1716,21 @@ function draw6_5(){ // Cambrian explosion
 	baseMarker(millX,shapeA[9],"Mammals",colors[16]);
 
 	/// first human <-- PLEIS ///
+	shapeA[8] = 1;
 	cxa.globalAlpha = shapeA[8];
 	cxa.fillStyle = colors[10];
-	cxa.fillRect(shapeX[8],y1,shapeW[8],h1);
+	cxa.fillRect(shapeX[0],y1,-shapeW[8],h1);
 
-	/// MARKER ///
-	// millX = shapeX[8] + 0.5 * shapeW[8];
-	// baseMarker2(shapeX[8],shapeA[8],"Humans",colors[10]); // no idea why this appears at the top right of the
-
-	/// HOLO ///
-	cxa.globalAlpha = shapeA[7];
-	cxa.fillStyle = colors[7];
-	cxa.fillRect(shapeX[7],y1,shapeW[7],h1);
-
-	/// MARKER ///
-	millX = shapeX[7]+(shapeW[7]/2);
-	baseMarker(millX,shapeA[7],"Holocene epoch",colors[7]);
-
-	/// BLOCK///
-	cxa.globalAlpha = 1;
-	cxa.fillStyle = bgColor;
-	cxa.fillRect(0,y1-(units*0.55),units*2,h1+(units*4));
-
+	
 	/// DATE MARKER ///
 	centuryX = bgx;
 	topMarker(centuryX,shapeA[10],"538.8 million years ago",colors[12]);
-	// /// DATE MARKER ///
-	// centuryX = shapeX[8];
-	// topMarker(centuryX,shapeA[8],"2 . 588 million years ago",colors[10]);
-	// /// DATE MARKER ///
-	// // centuryX = shapeX[11];
-	// centuryX = bgx;
-	// topMarker(centuryX,dateA,"4.5 billion years ago",colors[13]); //red
-
+	
 
 	/// DAY ///
 	cxa.globalAlpha = shapeA[0];
 	cxa.fillStyle = colors[0];
-	cxa.fillRect(shapeX[0],y1,shapeW[0],h1);
+	cxa.fillRect(shapeX[0],y1,1,h1);
 }
 
 function draw7() { ////  Earth forms <-- ERA ////
@@ -1840,10 +1783,10 @@ function draw7() { ////  Earth forms <-- ERA ////
     shapeX[13] = shapeX[12]-shapeW[13];
 	shapeX[14] = shapeX[13]-shapeW[14];
 
-		// Mammals (200 Myr ago)
+	// Mammals (200 Myr ago)
 	//destW[9] = (bgw/100)*5;
 	shapeA[9] = 1;
-	shapeW[9] = (shapeW[10]/538)*200;
+	destW[9] = (shapeW[10]/538)*200;
 	shapeX[9] = shapeX[0]-shapeW[9];
 
 	// Cambrian explosion <-- Dinosaurs
@@ -1985,11 +1928,16 @@ function draw8() {  /////   BEGINNING OF THE UNIVERSE <-- EON //////
 		dateA = destDateA = 0;
 		focusCol = colors[1];
 		lastCol = colors[1];
-		shapeA[19] = 0;
+		shapeX[19] = bgx;
+		shapeW[19] = bgw;
+		shapeX[11] = bgx;
+		shapeW[11] = 0;
+		destX[11] = bgx;
+		destW[11] = bgw*(13.8/18.3);
 		//geo scale
 		//shapeW[19] = bgw*8.3;
 		//
-		tweenSpeed = 10;
+		tweenSpeed = 5;
 		//destW[19] = bgw;
 
 		//life & oxy
@@ -2026,12 +1974,12 @@ function draw8() {  /////   BEGINNING OF THE UNIVERSE <-- EON //////
 	destW[21] = destW[20] = humanWidth;
 
 
-
-	shapeX[19] = (bgw+bgx)-shapeW[19];
-	destW[19] = bgw/3;
+	// earth forms [19]
+	shapeX[19] = shapeX[11] + shapeW[11];
+	destW[19] = bgw-destW[11];	
 
 	//cambrian <-- phane
-	shapeW[15] = bgw * (0.54/13.8);
+	destW[15] = bgw * (0.54/13.8);
 	shapeX[15] = shapeX[0] - shapeW[15]	;
 	// mammal <-- proto
 	shapeW[16] = shapeW[15]*0.2;
@@ -2056,32 +2004,15 @@ function draw8() {  /////   BEGINNING OF THE UNIVERSE <-- EON //////
 
 	// DRAWING //
 
-
-
-	// BIRDS //
-	cxa.globalAlpha = shapeA[20];
-	cxa.fillStyle = lastCol;
-	cxa.fillRect(shapeX[20],y2,shapeW[20],h2);
-	/// MARKER ///
-	baseMarker2(shapeX[20],shapeA[20],"",lastCol);
-
-	// HUMANS //
-	cxa.globalAlpha = shapeA[21];
-	cxa.fillStyle = focusCol;
-	cxa.fillRect(shapeX[21],y2,shapeW[21],h2);
-	/// MARKER ///
-	baseMarker2(shapeX[21],shapeA[21],"200,000 years ago",focusCol);
-
-
-	/// UNI ///
-	cxa.globalAlpha = shapeA[19];
-	cxa.fillStyle = colors[2];
-	cxa.fillRect(bgx,y1,bgw,h1);
-
 	/// GREY ///
 	cxa.globalAlpha = 1;
 	cxa.fillStyle = greyPurpleColor;
-	cxa.fillRect(shapeX[19],y1,shapeW[19],h1);
+	cxa.fillRect(bgx,y1,bgw,h1);
+
+	/// UNI ///
+	cxa.globalAlpha = 1;
+	cxa.fillStyle = colors[2];
+	cxa.fillRect(shapeX[11],y1,shapeW[11],h1);
 	/// EARTH ///
 	cxa.globalAlpha = shapeA[19];
 	cxa.fillStyle = colors[3];
@@ -2090,22 +2021,6 @@ function draw8() {  /////   BEGINNING OF THE UNIVERSE <-- EON //////
 	/// MARKER ///
 	baseMarker2(shapeX[19],shapeA[19],"Earth is born",colors[3]);
 
-
-	/// HADEAN ///
-	cxa.globalAlpha = shapeA[18];
-	cxa.fillStyle = colors[20];
-	cxa.fillRect(shapeX[18],y1,shapeW[18],h1);
-	/// MARKER ///
-	millX = shapeX[18]+(shapeW[18]/2);
-	//baseMarker(millX,shapeA[18]*0.1,"Hadean eon",colors[20]);
-
-	/// ARCHEAN ///
-	cxa.globalAlpha = shapeA[17];
-	cxa.fillStyle = colors[19];
-	cxa.fillRect(shapeX[17],y1,shapeW[17],h1);
-	/// MARKER ///
-	millX = shapeX[17]+(shapeW[17]/2);
-	//baseMarker(millX,shapeA[17]*0.1,"Archean eon",colors[19]);
 
 	/// cambrian <-- PHANEROZOIC ///
 	cxa.globalAlpha = 1;
@@ -2142,9 +2057,14 @@ function draw8() {  /////   BEGINNING OF THE UNIVERSE <-- EON //////
 function draw9() { // Earth is swallowed/flung
 
 	if (lastFrame<frame) { // FWD
-		shapeX[2] = bgx;
+		//universe
+		shapeX[2] = bgx; 
 		shapeW[2] = bgw;
 		destA[2] = 1;
+
+		//earth
+		shapeX[1] = shapeX[19];
+		shapeW[1] = shapeW[19];
 	}
 	if (lastFrame>frame) { // BK
 		destA[3] = 0;
@@ -2154,6 +2074,7 @@ function draw9() { // Earth is swallowed/flung
 	}
 	lastFrame = frame;
 
+	// Earth
 	destX[2] = bgx;
 	destW[2] = bgw;
 
@@ -2215,24 +2136,29 @@ function draw9() { // Earth is swallowed/flung
 	/// mammal <- PROTOZOIC ///
 	shapeA[16] = 1;
 	cxa.globalAlpha = shapeA[16];
-	cxa.fillStyle = colors[21];
+	cxa.fillStyle = colors[21]; 
 	cxa.fillRect(shapeX[16],y1,shapeW[16],h1);
 	
 
 	/// MARKER ///
-	topMarker(bgx,1,"13.8 billion years ago",colors[3]);
-	baseMarker2(bgx,dateA,"The universe is born",colors[3]);
+	topMarker(shapeX[2],1,"13.8 billion years ago",colors[3]);
+	baseMarker2(shapeX[2],dateA,"The universe is born",colors[3]);
 	topMarker(shapeX[0]-future,1,"4.5 billion years ago",colors[1]);
 	baseMarker2(shapeX[0]-future,dateA,"The Earth is born",colors[1]);
-	
+	topMarker(bgx+bgw,1,"5 billion years later",colors[4]);
 }
 
 // SUN EXPLODES
 function draw10() { 
 	if (lastFrame<frame) { // FWD
-		shapeX[2] = bgx;
-		shapeW[2] = bgw;
+		shapeX[2] = bgx+bgw;
+		shapeW[2] = 0;
 		destA[2] = 1;
+		shapeW[1] = bgx + bgw - destX[1];
+
+		destW[1] = bgw*(5/20.8);// earth swallow
+		shapeW[1] = destW[1];
+		destW[2] = bgw*(2)/20.8; 
 	}
 	if (lastFrame>frame) { // BK
 		destA[3] = 0;
@@ -2242,30 +2168,29 @@ function draw10() {
 	}
 	lastFrame = frame;
 
-	destX[2] = bgx;
-	destW[2] = bgw;
+	destX[2] = bgx+bgw;
+	// destW[2] = bgw;
 
 	/*
 	Total span = 13.8 + 7 billion yr = 20.8 billion yr = bgw
 	*/
 
 
-	var monthWidth = bgw/12;
-	destX[1] = bgx+(thisDate.getMonth()*monthWidth);
-	destW[1] = monthWidth;
+	// var monthWidth = bgw/12;
+	// destX[1] = bgx+(thisDate.getMonth()*monthWidth);
+	// destW[1] = monthWidth;
 
 	var dayWidth = 1;
 
 	shapeX[3] = bgx;
 
 	// for Earth swallowed
-	shapeX[2] = shapeX[3] + bgw*(13.8 - 4.5)/20.8
+	//shapeX[2] = shapeX[3] + bgw*(13.8 - 4.5)/20.8;
 
 	// where today is 
-	shapeX[1] = shapeX[3] + bgw*(13.8/20.8) 
+	shapeX[1] = shapeX[3] + bgw*(13.8/20.8);
 	shapeX[0] = shapeX[1]+((thisDate.getDate()-1)*dayWidth);
-	shapeW[1] = bgw*(5/20.8) 
-	shapeW[2] = (bgx+bgw)- shapeX[1]; 
+	
 	
 	destW[0] = dayWidth;
 
@@ -2282,10 +2207,7 @@ function draw10() {
 	cxa.fillStyle = greyColor;
 	cxa.fillRect(bgx,y1,bgw,h1);
 
-	/// Sun explodes ///
-	cxa.globalAlpha = shapeA[2];
-	cxa.fillStyle = colors[21]; // life green
-	cxa.fillRect(shapeX[1],y1,shapeW[2],h1);
+	
 
 	/// Universe is born ///
 	future = shapeX[3]-shapeX[1]; 
@@ -2315,6 +2237,11 @@ function draw10() {
 	cxa.fillStyle = colors[21];
 	cxa.fillRect(shapeX[16],y1,shapeW[16],h1);
 
+	/// Sun explodes ///
+	cxa.globalAlpha = 1;
+	cxa.fillStyle = colors[21]; // life green
+	cxa.fillRect(shapeX[2],y1,-shapeW[2],h1);
+
 	/// DAY ///
 	cxa.globalAlpha = shapeA[0];
 	cxa.fillStyle = colors[0]; //yellow
@@ -2337,9 +2264,15 @@ function draw10() {
 function draw11() { 
 
 	if (lastFrame<frame) { // FWD
-		shapeX[3] = bgx;
-		shapeW[3] = bgw;
+		shapeX[3] = shapeX[0];
+		destW[3] = bgw;
 		destA[3] = 1;
+
+		var byearWidth = bgw/163.8; // billion year width
+		destW[1] = 4.5*byearWidth;
+		destW[2] = 9.3*byearWidth;
+		destX[3] = bgx;
+		tweenSpeed = 5;
 	}
 
 	// this whole thing needs to be changed
@@ -2349,32 +2282,33 @@ function draw11() {
 		destW[3] = centuryWidth;
 
 		yearWidth = shapeW[3]/100;
-		shapeX[2] = bgx+((thisDate.getFullYear()-2000)*yearWidth);
-		shapeW[2] = yearWidth;
+		destX[2] = bgx+((thisDate.getFullYear()-2000)*yearWidth);
+		destW[2] = yearWidth;
 
 		monthWidth = shapeW[2]/12;
-	    shapeX[1] = shapeX[2]+(thisDate.getMonth()*monthWidth);
-	    shapeW[1] = monthWidth;
+	    destX[1] = shapeX[2]+(thisDate.getMonth()*monthWidth);
+	    destW[1] = monthWidth;
 
 		dayWidth = 1;
-	    shapeX[0] = shapeX[1]+(thisDate.getDate()*dayWidth);
-	    shapeW[0] = dayWidth;
+	    destX[0] = shapeX[1]+(thisDate.getDate()*dayWidth);
+	    destW[0] = dayWidth;
 
-		tweenSpeed = 10;
+		tweenSpeed =5;
 	}
 	lastFrame = frame;
 
+	shapeX[3] = shapeX[1];
 
 	// Total = 150 + 13.8 = 163.8
 	var byearWidth = bgw/163.8; // billion year width
+	// destX[2] = bgx;
+	// destW[2] = byearWidth; //?
+
 	destX[2] = bgx;
-	destW[2] = byearWidth; //?
+	
 
-	shapeX[2] = bgx;
-	shapeW[2] = 9.3*byearWidth;
-
-	shapeX[1] = shapeX[2] + 9.3*byearWidth;
-	shapeW[1] = 4.5*byearWidth;
+	destX[1] = shapeX[2] + 9.3*byearWidth;
+	
 	destW[1] = 1;
 
 	shapeX[0] = shapeX[1] + shapeW[1];
@@ -2389,7 +2323,7 @@ function draw11() {
 	/// FUTURE CENTURY ///
 	cxa.globalAlpha = shapeA[3];
 	cxa.fillStyle = colors[20]; // b/purple (latter half of year)
-	cxa.fillRect(shapeX[3],y1,bgw,h1);
+	cxa.fillRect(shapeX[3],y1,shapeW[3],h1);
 
 	/// sun explode ///
 	future = 7*byearWidth;
@@ -2427,15 +2361,29 @@ function draw11() {
 
 // Reaching the affectable universe
 function draw12() {
+	if (lastFrame<frame) { // FWD
+		shapeX[2] = bgx;
+		shapeW[2] = 0;
+		
+		destX[2] = bgx;
+		byearWidth = bgw/163.8;
+		destW[2] = 100 * byearWidth;
+		tweenSpeed = 5;
+	}
+
+	// this whole thing needs to be changed
+	if (lastFrame>frame) { // BK
+		
+	}
 	lastFrame = frame;
 
 	// Total = 150 + 13.8 = 163.8 --> 
 	var byearWidth = bgw/163.8; // billion year width
-	destX[2] = bgx;
-	destW[2] = byearWidth; //?
+	// destX[2] = bgx;
+	// destW[2] = 100*byearWidth; 
 
-	shapeX[2] = bgx;
-	shapeW[2] = 9.3*byearWidth;
+	// shapeX[2] = bgx;
+	// shapeW[2] = 9.3*byearWidth;
 
 	shapeX[1] = shapeX[2] + 9.3*byearWidth;
 	shapeW[1] = 4.5*byearWidth;
@@ -2453,12 +2401,12 @@ function draw12() {
 	/// FUTURE CENTURY ///
 	cxa.globalAlpha = shapeA[3];
 	cxa.fillStyle = colors[20]; // b/purple (latter half of year)
-	cxa.fillRect(shapeX[3],y1,bgw,h1);
+	cxa.fillRect(shapeX[3],y1,shapeW[3],h1);
 
 	// the affectable universe
-	future = 100*byearWidth;
+	cxa.globalAlpha = 1;
 	cxa.fillStyle = colors[8]; // other purple
-	cxa.fillRect(shapeX[2],y1,future,h1);
+	cxa.fillRect(shapeX[2],y1,shapeW[2],h1);
 
 	/// sun explode ///
 	future = 7*byearWidth;
@@ -2499,74 +2447,34 @@ function draw12() {
 // Length of stelliferous era
 // 100 trillion years in the future
 function draw13() {
+	if (lastFrame<frame) { // FWD
+		destX[3] = destX[2] = destX[1] = destX[0] = bgx;
+		destW[3] = destW[2] = destW[1] = destW[0] = 0;
+
+		tweenSpeed = 3;
+
+	}
+
+	// this whole thing needs to be changed
+	if (lastFrame>frame) { // BK
+		
+	}
 	lastFrame = frame;
 
 	// Total = 100 trillion years
 	// 150 billion = 0.15 trillion
-	var tyearWidth = bgw/100; // billion year width
-	destX[2] = bgx;
-	destW[2] = tyearWidth; //?
+	// var tyearWidth = bgw/100; // trillion year width
+	// destX[2] = bgx;
+	// destW[2] = tyearWidth; //?
 
-	// today
-	shapeX[0] = bgx + 0.014 * tyearWidth;
+	// // today
+	// shapeX[0] = bgx + 0.014 * tyearWidth;
 
-	// local group
-	shapeX[1] = shapeX[0];
-	shapeW[1] = 0.15*tyearWidth;
+	// // local group
+	// shapeX[1] = shapeX[0];
+	// shapeW[1] = 0.15*tyearWidth;
 
-	shapeA[3] = 1;
-
-	/// GREY ///
-	cxa.globalAlpha = 1;
-	cxa.fillStyle = greyColor;
-	cxa.fillRect(bgx,y1,bgw,h1);
-
-	/// Degenerate era ///
-	cxa.globalAlpha = shapeA[3];
-	cxa.fillStyle = colors[9]; // light blue
-	cxa.fillRect(shapeX[2],y1,bgw,h1);
-
-	/// local group ///
-	cxa.globalAlpha = shapeA[1]; 
-	cxa.fillStyle = colors[20];//b/purple
-	cxa.fillRect(shapeX[1],y1,shapeW[1],h1);
-
-	/// today ///
-	cxa.globalAlpha = shapeA[2];
-	cxa.fillStyle = colors[1]; // yellow
-	cxa.fillRect(shapeX[0],y1,1,h1);
-
-
-	// topMarker(bgx,1,"13.8 billion years ago",colors[3]);
-	baseMarker2(bgx,dateA,"Everything that has ever happened",colors[3]);
-	// topMarker(shapeX[2] + 100*byearWidth,1,"???? years later",colors[8]);
-	// baseMarker(shapeX[2] + 60*byearWidth,shapeA[3],"Intergalactic travel",colors[8]);
-	topMarker(bgx+bgw,1,"100 trillion years later",colors[9]);
-	// baseMarker2(shapeX[0] + 7*byearWidth,dateA,"The Sun explodes",colors[21]);
-}
-
-// Stelliferous era (log scale)
-function draw14() {
-	lastFrame = frame;
-
-	// Past: 10 ^ 10 (13.8 billion)
-	// Future: 10 ^ 14 (100 trillion)
-	// Total = 100 trillion years = 10 ^ 14
-	// 150 billion = 0.15 trillion= 10 ^ 11
-	var logstepWidth = bgw/25; // one power of ten step
-	destX[2] = bgx;
-	destW[2] = logstepWidth; //?
-	shapeX[2] = bgx;
-
-	// today
-	shapeX[0] = bgx + 10 * logstepWidth; // 13.8 billion years
-	shapeW[0] = logstepWidth;
-
-	// local group
-	shapeX[1] = shapeX[0]+9*logstepWidth;
-	shapeW[1] = 11*logstepWidth;
-
-	shapeA[3] = 1;
+	// shapeA[3] = 1;
 
 	/// GREY ///
 	cxa.globalAlpha = 1;
@@ -2576,7 +2484,89 @@ function draw14() {
 	/// stelliferous era ///
 	cxa.globalAlpha = shapeA[3];
 	cxa.fillStyle = colors[9]; // light blue
-	cxa.fillRect(shapeX[0],y1,15*logstepWidth,h1);
+	cxa.fillRect(shapeX[2],y1,bgw,h1);
+
+	/// local group ///
+	cxa.globalAlpha = shapeA[1]; 
+	cxa.fillStyle = colors[20];//b/purple
+	cxa.fillRect(shapeX[1],y1,shapeW[1],h1);
+	
+	// /// universe ///
+	// future = 9.3*byearWidth;
+	// cxa.globalAlpha = shapeA[1]; 
+	// cxa.fillStyle = colors[3];//red
+	// cxa.fillRect(shapeX[2],y1,shapeX[2],h1);
+
+	/// today ///
+	cxa.globalAlpha = shapeA[2];
+	cxa.fillStyle = colors[1]; // yellow
+	cxa.fillRect(shapeX[0],y1,1,h1);
+
+
+	// topMarker(bgx,1,"13.8 billion years ago",colors[3]);
+	baseMarker2(bgx,1,"Everything that has ever happened",colors[3]);
+	// topMarker(shapeX[2] + 100*byearWidth,1,"???? years later",colors[8]);
+	// baseMarker(shapeX[2] + 60*byearWidth,shapeA[3],"Intergalactic travel",colors[8]);
+	topMarker(bgx+bgw,1,"100 trillion years later",colors[9]);
+	// baseMarker2(shapeX[0] + 7*byearWidth,dateA,"The Sun explodes",colors[21]);
+}
+
+// Stelliferous era (log scale)
+function draw14() {
+	if (lastFrame<frame) { // FWD
+		
+		var logstepWidth = bgw/25; // one power of ten step
+		destX[2] = bgx;
+		destW[2] = 25*logstepWidth; 
+
+		// today
+		destX[0] = bgx + 10 * logstepWidth; // 13.8 billion years
+		destW[0] = logstepWidth;
+
+		// local group
+		destX[1] = shapeX[0]+9*logstepWidth;
+		destW[1] = 11*logstepWidth;
+
+		shapeA[3] = 1;
+		
+		tweenSpeed = 3;
+
+	}
+
+	// this whole thing needs to be changed
+	if (lastFrame>frame) { // BK
+		
+	}
+	lastFrame = frame;
+
+	// // Past: 10 ^ 10 (13.8 billion)
+	// // Future: 10 ^ 14 (100 trillion)
+	// // Total = 100 trillion years = 10 ^ 14
+	// // 150 billion = 0.15 trillion= 10 ^ 11
+	// var logstepWidth = bgw/25; // one power of ten step
+	// destX[2] = bgx;
+	// destW[2] = logstepWidth; //?
+	// shapeX[2] = bgx;
+
+	// // today
+	// shapeX[0] = bgx + 10 * logstepWidth; // 13.8 billion years
+	// shapeW[0] = logstepWidth;
+
+	// // local group
+	// shapeX[1] = shapeX[0]+9*logstepWidth;
+	// shapeW[1] = 11*logstepWidth;
+
+	// shapeA[3] = 1;
+
+	/// GREY ///
+	cxa.globalAlpha = 1;
+	cxa.fillStyle = greyColor;
+	cxa.fillRect(bgx,y1,bgw,h1);
+
+	/// stelliferous era ///
+	cxa.globalAlpha = shapeA[3];
+	cxa.fillStyle = colors[9]; // light blue
+	cxa.fillRect(shapeX[2],y1,shapeW[2],h1);
 
 	/// local group ///
 	cxa.globalAlpha = shapeA[1]; 
@@ -2603,34 +2593,45 @@ function draw14() {
 
 // Degenerate Era
 function draw15() {
+	if (lastFrame<frame) { // FWD
+		
+		// Past: 10 ^ 10 (13.8 billion)
+		// Future: 10 ^ 40
+		// Stelliferous: 10 ^ 14
+		// Total = 50 units
+		// 150 billion = 0.15 trillion= 10 ^ 11
+		var logstepWidth = bgw/50; // one power of ten step
+		destX[2] = bgx;
+		destW[2] = 25*logstepWidth; //?
+
+		// today
+		destX[0] = bgx + 10 * logstepWidth; // 13.8 billion years
+		destW[0] = logstepWidth;
+
+		// local group
+		destX[1] = shapeX[0]+9*logstepWidth;
+		destW[1] = 11*logstepWidth;
+
+		// end of stelliferous era (100 Tyr)
+		destW[2] = 15*logstepWidth;
+
+		// degenerate era
+		destX[3] = destX[2] + destX[2];
+		destW[3] = bgx + bgw - destX[3];
+
+		shapeA[3] = 1;
+		
+		tweenSpeed = 3;
+
+	}
+
+	// this whole thing needs to be changed
+	if (lastFrame>frame) { // BK
+		
+	}
 	lastFrame = frame;
 
-	// Past: 10 ^ 10 (13.8 billion)
-	// Future: 10 ^ 40
-	// Stelliferous: 10 ^ 14
-	// Total = 50 units
-	// 150 billion = 0.15 trillion= 10 ^ 11
-	var logstepWidth = bgw/50; // one power of ten step
-	destX[2] = bgx;
-	destW[2] = logstepWidth; //?
-	shapeX[2] = bgx;
 
-	// today
-	shapeX[0] = bgx + 10 * logstepWidth; // 13.8 billion years
-	shapeW[0] = logstepWidth;
-
-	// local group
-	shapeX[1] = shapeX[0]+9*logstepWidth;
-	shapeW[1] = 11*logstepWidth;
-
-	// end of stelliferous era (100 Tyr)
-	shapeW[2] = 15*logstepWidth;
-
-	// degenerate era
-	shapeX[3] = shapeX[2] + shapeW[2];
-	shapeW[3] = 35*logstepWidth;
-
-	shapeA[3] = 1;
 
 	/// GREY ///
 	cxa.globalAlpha = 1;
@@ -2673,48 +2674,59 @@ function draw15() {
 
 // Black hole era
 function draw16() {
+	if (lastFrame<frame) { // FWD
+		
+		// Past: 10 ^ 10 (13.8 billion)
+		// Future: 10 ^ 100
+		// Stelliferous: 10 ^ 14
+		// Total = 110 units
+		// 150 billion = 0.15 trillion= 10 ^ 11
+		var logstepWidth = bgw/110; // one power of ten step
+		destX[2] = bgx;
+		destW[2] = logstepWidth; //?
+
+		// today
+		destX[0] = bgx + 10 * logstepWidth; // 13.8 billion years
+		destW[0] = logstepWidth;
+
+		// local group
+		destX[1] = destX[0]+9*logstepWidth;
+		destW[1] = 11*logstepWidth;
+
+		// end of stelliferous era (100 Tyr)
+		destW[2] = 15*logstepWidth;
+
+		// degenerate era
+		destX[3] = destX[2] + destW[2];
+		destW[3] = 35*logstepWidth;
+
+		shapeA[3] = 1;
+
+		// black hole era
+		destX[4] = destX[3] + destW[3];
+		destW[4] = 60*logstepWidth;
+
+		shapeA[4] = 1;
+
+		
+		tweenSpeed = 3;
+
+	}
+
+	// this whole thing needs to be changed
+	if (lastFrame>frame) { // BK
+		
+	}
 	lastFrame = frame;
 
-	// Past: 10 ^ 10 (13.8 billion)
-	// Future: 10 ^ 100
-	// Stelliferous: 10 ^ 14
-	// Total = 110 units
-	// 150 billion = 0.15 trillion= 10 ^ 11
-	var logstepWidth = bgw/110; // one power of ten step
-	destX[2] = bgx;
-	destW[2] = logstepWidth; //?
-	shapeX[2] = bgx;
-
-	// today
-	shapeX[0] = bgx + 10 * logstepWidth; // 13.8 billion years
-	shapeW[0] = logstepWidth;
-
-	// local group
-	shapeX[1] = shapeX[0]+9*logstepWidth;
-	shapeW[1] = 11*logstepWidth;
-
-	// end of stelliferous era (100 Tyr)
-	shapeW[2] = 15*logstepWidth;
-
-	// degenerate era
-	shapeX[3] = shapeX[2] + shapeW[2];
-	shapeW[3] = 35*logstepWidth;
-
-	shapeA[3] = 1;
-
-	// black hole era
-	shapeX[4] = shapeX[3] + shapeW[3];
-	shapeW[4] = 60*logstepWidth;
-
-	shapeA[4] = 1;
-
+	
 	/// GREY ///
 	cxa.globalAlpha = 1;
 	cxa.fillStyle = greyColor;
 	cxa.fillRect(bgx,y1,bgw,h1);
 
 	// black hole era ///
-	cxa.globalAlpha = shapeA[4];
+	cxa.globalAlpha = 1;
 	cxa.fillStyle = colors[19]; // r/purple
 	cxa.fillRect(shapeX[4],y1,shapeW[4],h1);
 
@@ -2750,11 +2762,23 @@ function draw16() {
 	// baseMarker(shapeX[2] + 60*byearWidth,shapeA[3],"Intergalactic travel",colors[8]); // causes top text to go off the screen
 	topMarker(shapeX[0]+shapeW[2],1,"100 trillion",colors[9]);
 	topMarker(shapeX[3]+shapeW[3],1,"10 duodecillion (10e+40) years",colors[10]);
-	topMarker(shapeX[3]+shapeW[3],1,"1 googol (10e+100) years",colors[19]);
+	topMarker(shapeX[4]+shapeW[4],1,"1 googol (10e+100) years",colors[19]);
 }
 
 // Dark era
 function draw17() {
+	if (lastFrame<frame) { // FWD
+		destX[4] = destX[3] = destX[2] = destX[1] = destX[0] = bgx;
+		destW[4] = destW[3] = destW[2] = destW[1] = destW[0] = 0;
+
+		tweenSpeed = 3;
+
+	}
+
+	// this whole thing needs to be changed
+	if (lastFrame>frame) { // BK
+		
+	}
 	lastFrame = frame;
 
 	// Past: 10 ^ 10 (13.8 billion)
@@ -2762,68 +2786,68 @@ function draw17() {
 	// Stelliferous: 10 ^ 14
 	// Total = 110 units
 	// 150 billion = 0.15 trillion= 10 ^ 11
-	var logstepWidth = bgw/110; // one power of ten step
-	destX[2] = bgx;
-	destW[2] = logstepWidth; //?
-	shapeX[2] = bgx;
+	// var logstepWidth = bgw/110; // one power of ten step
+	// destX[2] = bgx;
+	// destW[2] = logstepWidth; //?
+	// shapeX[2] = bgx;
 
-	// today
-	shapeX[0] = bgx; // 13.8 billion years
-	shapeW[0] = logstepWidth;
+	// // today
+	// shapeX[0] = bgx; // 13.8 billion years
+	// shapeW[0] = logstepWidth;
 
-	// local group
-	shapeX[1] = shapeX[0]+9*logstepWidth;
-	shapeW[1] = 11*logstepWidth;
+	// // local group
+	// shapeX[1] = shapeX[0]+9*logstepWidth;
+	// shapeW[1] = 11*logstepWidth;
 
-	// end of stelliferous era (100 Tyr)
-	shapeW[2] = 15*logstepWidth;
+	// // end of stelliferous era (100 Tyr)
+	// shapeW[2] = 15*logstepWidth;
 
-	// degenerate era
-	shapeX[3] = shapeX[2] + shapeW[2];
-	shapeW[3] = 35*logstepWidth;
+	// // degenerate era
+	// shapeX[3] = shapeX[2] + shapeW[2];
+	// shapeW[3] = 35*logstepWidth;
 
-	shapeA[3] = 1;
+	// shapeA[3] = 1;
 
-	// black hole era
-	shapeX[4] = shapeX[3] + shapeW[3];
-	shapeW[4] = 60*logstepWidth;
+	// // black hole era
+	// shapeX[4] = shapeX[3] + shapeW[3];
+	// shapeW[4] = 60*logstepWidth;
 
-	shapeA[4] = 1;
+	// shapeA[4] = 1;
 
 	/// GREY ///
 	cxa.globalAlpha = 1;
 	cxa.fillStyle = greyColor;
 	cxa.fillRect(bgx,y1,bgw,h1);
 
-	// // black hole era ///
-	// cxa.globalAlpha = shapeA[4];
-	// cxa.fillStyle = colors[19]; // purple
-	// cxa.fillRect(shapeX[4],y1,shapeW[4],h1);
+	// black hole era ///
+	cxa.globalAlpha = 1;
+	cxa.fillStyle = colors[19]; // r/purple
+	cxa.fillRect(shapeX[4],y1,shapeW[4],h1);
 
-	// /// degen era ///
-	// cxa.globalAlpha = shapeA[3];
-	// cxa.fillStyle = colors[10]; // purple
-	// cxa.fillRect(shapeX[3],y1,shapeW[3],h1);
+	/// degen era ///
+	cxa.globalAlpha = shapeA[3];
+	cxa.fillStyle = colors[10]; // purple
+	cxa.fillRect(shapeX[3],y1,shapeW[3],h1);
 
-	// /// stelliferous era ///
-	// cxa.globalAlpha = shapeA[3];
-	// cxa.fillStyle = colors[9]; // light blue
-	// cxa.fillRect(shapeX[0],y1,shapeW[2],h1);
+	/// stelliferous era ///
+	cxa.globalAlpha = shapeA[3];
+	cxa.fillStyle = colors[9]; // light blue
+	cxa.fillRect(shapeX[2],y1,shapeW[2],h1);
 
-	// /// local group ///
-	// cxa.globalAlpha = shapeA[1]; 
-	// cxa.fillStyle = colors[20];//b/purple
-	// cxa.fillRect(shapeX[0],y1,shapeW[1],h1);
+	/// local group ///
+	cxa.globalAlpha = shapeA[1]; 
+	cxa.fillStyle = colors[20];//b/purple
+	cxa.fillRect(shapeX[1],y1,shapeW[1],h1);
 
-	// /// today ///
-	// cxa.globalAlpha = shapeA[2];
-	// cxa.fillStyle = colors[0]; // yellow
-	// cxa.fillRect(shapeX[0],y1,shapeW[0],h1);
+	/// today ///
+	cxa.globalAlpha = shapeA[2];
+	cxa.fillStyle = colors[0]; // yellow
+	cxa.fillRect(shapeX[0],y1,shapeW[0],h1);
 
-	// // past
-	// future = shapeX[0] - shapeX[2];
-	// cxa.fillStyle = colors[3]; // red
-	// cxa.fillRect(shapeX[2],y1,future,h1);
+	// past
+	future = shapeX[0] - shapeX[2];
+	cxa.fillStyle = colors[3]; // red
+	cxa.fillRect(shapeX[2],y1,future,h1);
 
 
 	// topMarker(bgx,1,"13.8 billion years ago",colors[3]);
