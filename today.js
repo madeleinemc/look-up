@@ -770,7 +770,7 @@ function draw0() {
 	}
 	lastFrame = frame;
 
-	tweenSpeed = 10;
+	tweenSpeed = 5;
 
 	destX[0] = halfX-units;
 	destW[0] = units*2;
@@ -949,7 +949,7 @@ function draw3() { // CENTURY
 	    shapeX[0] = shapeX[1]+(thisDate.getDate()*dayWidth);
 	    shapeW[0] = dayWidth;
 
-		tweenSpeed = 10;
+		tweenSpeed = 5;
 	}
 	lastFrame = frame;
 
@@ -1028,13 +1028,13 @@ function draw3_5(){ // // INDUSTRIALIZATION /////////
 		destA[4] = 1;
 		destW[2] = 0;
 		
-		tweenSpeed = 3;		
+		tweenSpeed = 5;		
 	}
 	if (lastFrame>frame) { // BK
 		dateA = destDateA = 1;
 		shapeW[4] = destW[4] = 0;
 		
-		tweenSpeed = 7;
+		tweenSpeed = 5;
 		
 	}
 	lastFrame = frame;
@@ -1129,7 +1129,7 @@ function draw3_6() { ////  AGRICULTURE  ///////
 		shapeW[4] = destW[4] = (bgw/1000)*(thisDate.getFullYear()-2000);
 		shapeW[5] = shapeW[6] = (shapeW[7]/3);
 
-		tweenSpeed = 9;
+		tweenSpeed = 5;
 		epochPhase = 1;
 	}
 	if (lastFrame>frame) { // BK
@@ -1285,7 +1285,7 @@ function draw6() { ////   HUMANS <-- PERIOD
 		shapeW[6] = millWidth;
 		shapeW[5] = millWidth;
 
-		tweenSpeed = 7;
+		tweenSpeed = 5;
 	}
 	if (lastFrame>frame) { // BK
 		dateA = destDateA = 1;
@@ -1319,7 +1319,7 @@ function draw6() { ////   HUMANS <-- PERIOD
 	destA[6] = 0;
 
 	// destW[7] = (shapeW[8]/100)*0.45;
-	destW[7] = shapeW[8]*(12000/200000);
+	destW[7] = shapeW[8]*(12000/300000);
 	shapeX[7] = (fullX-shapeW[7]) - (units*2);
 
 	var millWidth = shapeW[7]/11.5;
@@ -1447,7 +1447,7 @@ function draw6() { ////   HUMANS <-- PERIOD
 
 	/// DATE MARKER ///
 	centuryX = shapeX[8];
-	topMarker(centuryX,dateA,"200,000 years ago",colors[10]);
+	topMarker(centuryX,dateA,"300,000 years ago",colors[10]);
 
 	/// DAY ///
 	cxa.globalAlpha = shapeA[0];
@@ -1459,20 +1459,20 @@ function draw4() { // //  mammal lifespan <-- MILLENIUM  /////////
 
     if (lastFrame<frame) { // FWD
 
-		tweenSpeed = 3;
+		tweenSpeed = 5;
 		dateA = destDateA = 1;
 		destW[8] = 0.2*bgw; // it expands from 0 to bgw
 		shapeX[8] = bgx; // where it starts before animation
 		 
 		destA[8] = 1;
 		
-		tweenSpeed = 3;
+		tweenSpeed = 5;
 
 	}
 	if (lastFrame>frame) { // BK
 		shapeW[4] = destW[4] = (bgw/1000)*(thisDate.getFullYear()-2000);
 		destA[0] = 1;
-		tweenSpeed = 7;
+		tweenSpeed = 5;
 	}
 	lastFrame = frame;
 
@@ -1480,7 +1480,7 @@ function draw4() { // //  mammal lifespan <-- MILLENIUM  /////////
 	destA[6] = 1;
 	destA[5] = 0;
 
-	destW[6] = shapeW[8] * (12/200)
+	destW[6] = shapeW[8] * (12/300)
 	destX[6] = shapeX[0] - shapeW[6] - shapeW[1];
 
 
@@ -1575,7 +1575,7 @@ function draw4() { // //  mammal lifespan <-- MILLENIUM  /////////
 	cxa.fillRect(shapeX[0],y1,dayWidth,h1);
 
 	/// DATE MARKER ///
-	topMarker(bgx,dateA,"200,000 years ago",colors[10]);
+	topMarker(bgx,dateA,"300,000 years ago",colors[10]);
 }
 
 function draw6_5(){ // Cambrian explosion
@@ -1619,7 +1619,7 @@ function draw6_5(){ // Cambrian explosion
 		shapeA[9] = 1;
 		shapeA[10] = 1;
 		shapeA[11] = 1;
-		tweenSpeed = 8;
+		tweenSpeed = 3;
 	}
 	lastFrame = frame;
 
@@ -1739,7 +1739,7 @@ function draw7() { ////  Earth forms <-- ERA ////
 		dateA = destDateA = 0;
 		shapeX[9] = bgx;
 		shapeW[11] = shapeW[10] = shapeW[9] = bgw;
-		tweenSpeed = 7;
+		tweenSpeed = 3;
 
 		destW[9] = (bgw/100)*5;
 	    destW[10] = (bgw/100)*30;
@@ -1768,7 +1768,7 @@ function draw7() { ////  Earth forms <-- ERA ////
 		shapeA[9] = 1;
 		shapeA[10] = 1;
 		shapeA[11] = 1;
-		tweenSpeed = 8;
+		tweenSpeed = 5;
 	}
 	lastFrame = frame;
 
@@ -1937,7 +1937,7 @@ function draw8() {  /////   BEGINNING OF THE UNIVERSE <-- EON //////
 		//geo scale
 		//shapeW[19] = bgw*8.3;
 		//
-		tweenSpeed = 5;
+		tweenSpeed = 3;
 		//destW[19] = bgw;
 
 		//life & oxy
@@ -2272,7 +2272,7 @@ function draw11() {
 		destW[1] = 4.5*byearWidth;
 		destW[2] = 9.3*byearWidth;
 		destX[3] = bgx;
-		tweenSpeed = 5;
+		tweenSpeed = 3;
 	}
 
 	// this whole thing needs to be changed
@@ -2368,7 +2368,7 @@ function draw12() {
 		destX[2] = bgx;
 		byearWidth = bgw/163.8;
 		destW[2] = 100 * byearWidth;
-		tweenSpeed = 5;
+		tweenSpeed = 2;
 	}
 
 	// this whole thing needs to be changed
@@ -2451,7 +2451,7 @@ function draw13() {
 		destX[3] = destX[2] = destX[1] = destX[0] = bgx;
 		destW[3] = destW[2] = destW[1] = destW[0] = 0;
 
-		tweenSpeed = 3;
+		tweenSpeed = 2;
 
 	}
 
@@ -2621,7 +2621,7 @@ function draw15() {
 
 		shapeA[3] = 1;
 		
-		tweenSpeed = 3;
+		tweenSpeed = 2;
 
 	}
 
@@ -2771,7 +2771,7 @@ function draw17() {
 		destX[4] = destX[3] = destX[2] = destX[1] = destX[0] = bgx;
 		destW[4] = destW[3] = destW[2] = destW[1] = destW[0] = 0;
 
-		tweenSpeed = 3;
+		tweenSpeed = 1;
 
 	}
 
